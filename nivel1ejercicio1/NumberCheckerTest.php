@@ -3,13 +3,23 @@ require "nivel1ejercicio1.php";
 
 use PHPUnit\Framework\TestCase;
 
-class NumberCheckerTest extends NumberChecker {
+class NumberCheckerTest extends TestCase {
 
-    function isEvenTest() {
+    function testIsEven() {
         $parNumero = new NumberChecker(2);
         $imparNumero = new NumberChecker(3);
 
-        This->assertTrue($parNumero->isEven());
-        This->assertTrue($imparNumero->isEven());
+        $this->assertTrue($parNumero->isEven());
+        $this->assertFalse($imparNumero->isEven());
+    }
+    public function testIsPositive() {
+
+        $positivoNumero = new NumberChecker(8);
+        $negativoNumero = new NumberChecker(-8);
+        $zeroNumero = new NumberChecker(0);
+
+        $this->assertTrue($positivoNumero->isPositive()); 
+        $this->assertFalse($negativoNumero->isPositive()); 
+        $this->assertFalse($zeroNumero->isPositive()); 
     }
 }
